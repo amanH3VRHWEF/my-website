@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HAIR STUDIO – STYLE YOURSELF THE WAY YOU WANT BY YOURSELF</title>
+
+  <!-- TensorFlow & BlazeFace -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.13.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/blazeface@0.0.7"></script>
+
+  <link rel="stylesheet" href="styl.css">
+</head>
+<body>
+  <!-- Main Menu -->
+  <div id="mainMenu" class="main-menu">
+    <div class="menu-title">
+      <h1></h1>
+      <p>Style yourself the way you want by yourself</p>
+      <pGive a chance to this website to get the best version of yourself along with your hairs 😉</p>
+    </div>
+    <div class="main-buttons">
+      <button class="main-btn face-scan-btn" onclick="showSection('faceScan')">STYLING SECTION</button>
+      <button class="main-btn hairstyle-btn" onclick="showSection('hairstyles')">PRODUCTS TO BUY</button>
+    </div>
+  </div>
+
+  <!-- Face Scan Section -->
+  <div id="faceScanSection" class="content-section">
+    <button class="back-btn" onclick="showMainMenu()">← Back to Menu</button>
+    <div class="scan-section">
+      <h2>Face Analysis</h2>
+      <div class="camera-container">
+        <div id="placeholder" class="placeholder">
+          <i>📷</i>
+          <p>YOUR FACE WILL APPEAR HERE</p>
+        </div>
+        <canvas id="scanLine" width="320" height="240" style="position: absolute; top: 0; left: 0; pointer-events: none;"></canvas>
+        <div id="faceOverlay" class="face-overlay"></div>
+      </div>
+      <div class="insidebut">
+        <button id="start--Scan" class="startscan">SCAN FACE</button>
+        <button id="SELECT-HAIRSTYLES" class="select-hairstyles">SELECT HAIRSTYLES</button>
+        <button id="scanButton" class="scan-button">UPLOAD PHOTO</button>
+        <input type="file" id="fileInput" class="file-input" accept="image/*">
+      </div>
+
+      <div id="faceAnalysis" class="face-analysis">
+        <h3>ANALYSIS RESULTS</h3>
+        <div class="analysis-grid">
+          <div class="analysis-item"><h4>FACE SHAPE</h4><p id="faceShape">-</p></div>
+          <div class="analysis-item"><h4>FOREHEAD</h4><p id="forehead">-</p></div>
+          <div class="analysis-item"><h4>JAWLINE</h4><p id="jawline">-</p></div>
+          <div class="analysis-item"><h4>CHEEKBONES</h4><p id="cheekbones">-</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hairstyles Section -->
+  <div id="hairstylesSection" class="content-section">
+    <button class="back-btn" onclick="showMainMenu()">← Back to Menu</button>
+    <div class="hairstyles-section">
+      <h2>Recommended Hairstyles</h2>
+      <div class="result-nav">
+        <button id="nav-left">◀</button>
+        <div class="hairstyles-grid">
+          <div class="hairstyle-card" data-style="bob">
+            <div class="hairstyle-image">Bob Cut</div>
+            <div class="hairstyle-info">
+              <div class="hairstyle-name">Classic Bob</div>
+              <div class="hairstyle-description">A timeless cut that frames your face beautifully</div>
+            </div>
+          </div>
+          <div class="hairstyle-card" data-style="layered">
+            <div class="hairstyle-image">Layered Cut</div>
+            <div class="hairstyle-info">
+              <div class="hairstyle-name">Layered Style</div>
+              <div class="hairstyle-description">Perfect for adding volume and movement</div>
+            </div>
+          </div>
+          <div class="hairstyle-card" data-style="pixie">
+            <div class="hairstyle-image">Pixie Cut</div>
+            <div class="hairstyle-info">
+              <div class="hairstyle-name">Pixie Cut</div>
+              <div class="hairstyle-description">Bold and modern, low maintenance style</div>
+            </div>
+          </div>
+          <div class="hairstyle-card" data-style="waves">
+            <div class="hairstyle-image">Beach Waves</div>
+            <div class="hairstyle-info">
+              <div class="hairstyle-name">Beach Waves</div>
+              <div class="hairstyle-description">Effortless and natural-looking waves</div>
+            </div>
+          </div>
+        </div>
+        <button id="nav-right">▶</button>
+      </div>
+      <div id="styledPreview" class="styled-preview"></div>
+    </div>
+  </div>
+
+  <!-- Notification -->
+  <div id="notification" class="notification">
+    <span id="notificationText"></span>
+  </div>
+
+  <!-- JS File -->
+  <script src="scrip.js"></script>
+</body>
+</html>

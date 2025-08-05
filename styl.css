@@ -1,0 +1,432 @@
+* {
+    margin: 0;
+    padding: 20px;
+    
+}
+
+body {
+    background-attachment:scroll;
+    background-image: url('ChatGPT Image Jul 22, 2025, 09_05_14 AM.png'); /* Replace with your image file name */
+    background-size: cover;        /* makes it fill the screen */
+    background-repeat: no-repeat;  /* prevents repeating */
+    background-position: center; 
+
+}
+
+/* Main Menu - Only Face Scan and Hairstyle buttons visible initially */
+.main-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.menu-title {
+    text-align: center;
+    color:linear-gradient(45deg, #ff6b6b, #feca57,red,black);
+    margin-bottom: 50px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+@keyframes borderGlow {
+    0% {
+        border-image-source: linear-gradient(45deg,silver,black,goldenrod,black);
+    }
+    25% {
+        border-image-source: linear-gradient(135deg,silver,black,goldenrod,black);
+    }
+    50% {
+        border-image-source: linear-gradient(225deg,silver,black,goldenrod,black);
+    }
+    75% {
+        border-image-source: linear-gradient(315deg, silver,black,goldenrod,black);
+    }
+    100% {
+        border-image-source: linear-gradient(45deg,silver,black,goldenrod,black);
+    }
+}
+
+
+
+.menu-title p {
+    font-size: 2rem;
+    opacity: 1rem;
+    animation:neonGlow 2s infinite alternate;
+    font-size: 2rem;
+    position: relative;
+    background-color: rgba(0, 0, 0,0.5 );
+    border-top: 3; /* Optional: Add a background overlay for better readability */ /* Ensure it's above other content */
+    letter-spacing: 15px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-wrap: balance;
+    color: white;
+    text-shadow: 0 0 5px gold, 0 0 10px #feca57, 0 0 15px black, 0 0 20px goldenrod, 0 0 25px black, 0 0 30px goldenrod, 0 0 35px black;
+    animation: fadeInText 1s ease-in-out;
+    animation-delay: 0.5s; /* Delay to allow the title to appear first */
+    animation-fill-mode: forwards; /* Ensures the animation stays at the end state */
+    margin-top: 10rem;
+    perspective: 3dvb;
+    margin-inline-start: 30px;
+    
+
+
+}
+
+    
+
+@keyframes fadeInText {
+    from {
+        opacity: 0;
+        transform: translateY(20px); /* Slight downward movement */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Moves to its original position */
+    }
+}
+
+.main-buttons {
+    display: flex;
+    gap: 50px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.main-btn {
+    padding: 30px 50px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    background: linear-gradient( black,white,gold);
+    border: none;
+    border-radius: 15px;
+    text-shadow:0 0 5px gold, 0 0 10px #feca57, 0 0 15px black, 0 0 20px goldenrod, 0 0 25px black, 0 0 30px goldenrod, 0 0 35px black;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    min-width: 200px;
+}
+
+.main-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.main-btn.hairstyle-btn {
+    background: linear-gradient(black,white,gold);
+}
+
+/* Hidden content that appears after clicking buttons */
+.content-section {
+    display: none;
+    min-height: 100vh;
+    padding: 20px;
+    animation: fadeIn 0.5s ease-in;
+}
+
+.content-section.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Back button */
+.back-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 15px 25px;
+    background:linear-gradient(black,white,gold);
+    border: none;
+    border-radius: 10px;
+
+    font-size: 1rem;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.back-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Face Scan Section Styles */
+.scan-section {
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+    background-size: 30px;
+}
+
+.scan-section h2 {
+    color:whitesmoke;
+    outline: 2px solid black;
+    border-radius: 40px;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.camera-container {
+    width: 400px;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+    backdrop-filter: blur(10px);
+    border: 2px dashed rgba(255, 255, 255, 0.3);
+}
+.insidebut{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.placeholder {
+    text-align: center;
+    color: white;
+    font-size: 1.2rem;
+}
+
+.placeholder i {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.scan-button {
+    padding: 15px 40px;
+    background: linear-gradient(gold,white,black);
+    border: none;
+    border-radius: 10px;
+    color:black;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 200px;
+    height: 100px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    text-shadow:0 0 5px gold, 0 0 10px #feca57, 0 0 15px black, 0 0 20px goldenrod, 0 0 25px black, 0 0 30px goldenrod, 0 0 35px black;
+}
+
+.scan-button:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.file-input {
+    display: none;
+}
+.startscan{
+    padding: 4px;
+    color: black;
+    background: linear-gradient(gold,white,black);
+    border: none;
+    border-radius: 10px;
+    color:black;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 200px;
+    height: 100px;
+    text-shadow:0 0 5px gold, 0 0 10px #feca57, 0 0 15px black, 0 0 20px goldenrod, 0 0 25px black, 0 0 30px goldenrod, 0 0 35px black;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+.startscan:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+
+.face-analysis {
+    margin-top: 30px;
+background: rgba(0, 0, 0, 0.6);
+padding: 20px;
+border-radius: 15px;
+backdrop-filter: blur(10px);
+width: 100%;
+max-width: 600px;
+box-shadow: 0 0 20px gold, 0 0 10px white;
+border: 2px solid gold;
+color: white;
+font-family: 'Orbitron', sans-serif;
+font-weight: 200;
+text-shadow: 0 0 5px white, 0 0 10px BLACK;
+font-size: 1.2rem;
+
+}
+.select-hairstyles{
+    padding: 15px 30px;
+    background: linear-gradient(gold,white,black);
+    border: none;
+    border-radius: 10px;
+    color:black;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 200px;
+    height: 100px;
+    text-shadow:0 0 5px gold, 0 0 10px #feca57, 0 0 15px black, 0 0 20px goldenrod, 0 0 25px black, 0 0 30px goldenrod, 0 0 35px black;
+}
+.select-hairstyles:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+
+.face-analysis h3 {
+    color: white;
+    margin-bottom: 30px;
+
+    text-align: center;
+}
+
+.analysis-grid {
+    display: grid;
+    width: 240px;
+    margin-left: -40px;
+    gap: 20px;
+}
+
+.analysis-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    
+    border-radius: 10px;
+    text-align: center;
+}
+
+.analysis-item h4 {
+    color: white;
+    margin-bottom: 10px;
+}
+
+.analysis-item p {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Hairstyles Section Styles */
+.hairstyles-section {
+    padding: 50px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.hairstyles-section h2 {
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.hairstyles-grid {
+    display: grid;
+    gap: 30px;
+}
+
+.hairstyle-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-align: center;
+}
+
+.hairstyle-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.hairstyle-image {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    color: white;
+}
+
+.hairstyle-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.hairstyle-description {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+}
+
+/* Notification */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+}
+
+.notification.show {
+    transform: translateX(0);
+}
+
+/* Ripple Effect Animation */
+@keyframes rippleEffect {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(3);
+        opacity: 0;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main-buttons {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .main-btn {
+        min-width: 250px;
+    }
+
+    .menu-title h1 {
+        font-size: 2rem;
+    }
+
+    .camera-container {
+        width: 100%;
+        max-width: 350px;
+    }
+
+    .hairstyles-grid {
+        grid-template-columns: 1fr;
+    }
+}
